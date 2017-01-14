@@ -1,11 +1,11 @@
 /*
 ---------------------------------------
 
-	ColAndreas Draw Debug Line	
+	ColAndreas Draw Debug Line
 	@author: Ino
 	@version: 1.0.0
 	@release: 12/01/2017
-	@build: 1	
+	@build: 1
 	@download: github.com/Ino42O/CADrawDebugLine
 
 ---------------------------------------
@@ -15,7 +15,7 @@
 		* CA_DebugDrawLine(Float:StartX, Float:StartY, Float:StartZ, Float:EndX, Float:EndY, Float:EndZ, bool:StopAtCollision, Color = 0xFFFF0000);
 		* CA_DestroyDebugDrawLine(line);
 		* IsValidDebugDrawLine(line)
- 	
+
 
 
  	Changelog:
@@ -50,10 +50,10 @@
 
 #include <streamer>
 
-#if !defined COLANDREAS
+#if !defined COLANDREAS && !defined COLANDREAS_VERSION
 	#tryinclude <colandreas>
 
-	#if !defined COLANDREAS
+	#if !defined COLANDREAS && !defined COLANDREAS_VERSION
 		#error The ColAndreas plugin is required, get it here: github.com/Pottus/ColAndreas
 	#endif
 #endif
@@ -152,7 +152,7 @@ stock CA_DebugDrawLine(Float:StartX, Float:StartY, Float:StartZ, Float:EndX, Flo
 
 	LineInfo[id][cad_used] = true;
 
-	#if defined _Y_ITERATE_LOCAL_VERSION 
+	#if defined _Y_ITERATE_LOCAL_VERSION
 		Iter_Add(LineIter, id);
 	#endif
 
@@ -267,7 +267,7 @@ static stock ShowLine(line)
 			SetDynamicObjectPos(LineObject[line][i],
 				LineInfo[line][cad_posX] + ( temp * floatsin(rotZ, degrees) * floatcos(rotX, degrees) ),
 				LineInfo[line][cad_posY] + ( temp * floatcos(rotZ, degrees) * floatcos(rotX, degrees) ),
-				LineInfo[line][cad_posZ] + ( temp * floatsin(rotX, degrees) ) 
+				LineInfo[line][cad_posZ] + ( temp * floatsin(rotX, degrees) )
 			);
 
 			SetDynamicObjectRot(LineObject[line][i],
